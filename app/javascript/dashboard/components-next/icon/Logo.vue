@@ -8,10 +8,10 @@ const globalConfig = useMapGetter('globalConfig/get');
 
 <template>
   <img
-    v-if="globalConfig.logoThumbnail"
-    v-bind="attrs"
-    src="/brand-assets/logo_thumbnail.svg?v=crm-gloria-2"
-  />
+  v-if="globalConfig.logoThumbnail"
+  v-bind="attrs"
+  :src="globalConfig.logoThumbnail + '?v=crm-gloria-2'"
+/>
   <svg
     v-else
     v-once
