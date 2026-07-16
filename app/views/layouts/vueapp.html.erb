@@ -71,6 +71,14 @@
     <% end %>
     <%= vite_client_tag %>
     <%= vite_javascript_tag @application_pack %>
+
+<style>
+  .woot-banner:has(
+    a[href*="github.com/chatwoot/chatwoot/releases"]
+  ) {
+    display: none !important;
+  }
+</style>
   </head>
   <body class="text-slate-600">
     <div id="app"></div>
