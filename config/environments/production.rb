@@ -103,4 +103,13 @@ Rails.application.configure do
   config.action_mailbox.ingress = ENV.fetch('RAILS_INBOUND_EMAIL_SERVICE', 'relay').to_sym
 
   Rails.application.routes.default_url_options = { host: ENV['FRONTEND_URL'] }
+  frontend_url = ENV.fetch('FRONTEND_URL', nil)
+
+if frontend_url.present?
+  config.action_cable.url = frontend_url.sub(/^http/, 'ws') + '/cable'
+  config.action_cable.allowed_request_origins = [
+    frontend_url,
+    frontend_url.sub(/^https/, 'http')
+  ]
+end
 end
